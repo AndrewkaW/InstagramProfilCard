@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.instagramprofilcard.ui.theme.InstagramProfilCardTheme
+import com.example.instagramprofilcard.ui.theme.InstagramProfileCardTheme
 import com.example.instagramprofilcard.ui.theme.InstagramProfileCard
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InstagramProfilCardTheme {
+            InstagramProfileCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     InstagramProfileCard()
                 }

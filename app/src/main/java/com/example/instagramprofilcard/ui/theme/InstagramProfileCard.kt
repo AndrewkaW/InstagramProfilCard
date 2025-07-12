@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,11 +26,12 @@ import androidx.compose.ui.unit.dp
 fun InstagramProfileCard() {
 
     Card(
-        colors = CardDefaults.cardColors().copy(contentColor = Color.White),
+        colors = CardDefaults.cardColors()
+            .copy(contentColor = MaterialTheme.colorScheme.background,),
         shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
         border = BorderStroke(
             width = 1.dp,
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground
         ),
         elevation = CardDefaults.cardElevation(disabledElevation = 0.dp)
     ) {
