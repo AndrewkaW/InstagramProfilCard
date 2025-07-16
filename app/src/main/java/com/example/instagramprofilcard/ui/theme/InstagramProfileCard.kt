@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -45,27 +48,60 @@ fun InstagramProfileCard() {
         ),
         elevation = CardDefaults.cardElevation(disabledElevation = 0.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = Modifier.padding(8.dp)
         ) {
-            Image(
+            Row(
                 modifier = Modifier
-                    .clip(shape = CircleShape)
-                    .background(Color.White)
-                    .padding(8.dp)
-                    .size(60.dp),
-                painter = painterResource(R.drawable.ic_instagram),
-                contentDescription = "profile icon",
-                contentScale = ContentScale.Crop
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .background(Color.White)
+                        .padding(8.dp)
+                        .size(60.dp),
+                    painter = painterResource(R.drawable.ic_instagram),
+                    contentDescription = "profile icon",
+                    contentScale = ContentScale.Crop
+                )
+                UserStatistics(title = "Posts", value = "6950")
+                UserStatistics(title = "Followers", value = "436M")
+                UserStatistics(title = "Following", value = "76")
+            }
+
+            Text(
+                fontStyle = FontStyle.Italic,
+                fontFamily = FontFamily.Cursive,
+                fontSize = 32.sp,
+                text = "Instagram"
             )
-            UserStatistics(title = "Posts", value = "6950")
-            UserStatistics(title = "Followers", value = "436M")
-            UserStatistics(title = "Following", value = "76")
+            Text(
+                text = "#YoursToMake",
+                fontStyle = FontStyle.Normal,
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 14.sp
+            )
+            Text(
+                text = "www.facebook.com/emotional_health",
+                fontSize = 14.sp
+            )
+            Button(
+                onClick = {},
+                contentPadding = PaddingValues(vertical = 0.dp, horizontal = 18.dp),
+                colors = ButtonDefaults.buttonColors()
+                    .copy(containerColor = Color.Blue, contentColor = Color.White),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    fontSize = 14.sp,
+                    text = "Follow"
+                )
+            }
         }
+
     }
 
 }
