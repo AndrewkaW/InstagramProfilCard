@@ -1,9 +1,8 @@
 package com.example.instagramprofilcard.ui.theme
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +17,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instagramprofilcard.R
 
 
 @Composable
@@ -47,12 +48,13 @@ fun InstagramProfileCard() {
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
+            Image(
                 modifier = Modifier
-                    .size(50.dp)
-                    .background(Color.Red),
-                contentAlignment = Alignment.Center
-            ) {}
+                    .size(50.dp),
+                painter = painterResource(R.drawable.ic_instagram),
+                contentDescription = "profile icon",
+                contentScale = ContentScale.Crop
+            )
             UserStatistics(title = "Posts", value = "6950")
             UserStatistics(title = "Followers", value = "436M")
             UserStatistics(title = "Following", value = "76")
