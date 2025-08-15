@@ -1,5 +1,6 @@
 package com.example.instagramprofilcard.ui.theme
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,8 +43,9 @@ import com.example.instagramprofilcard.R
 fun InstagramProfileCard(
     viewModel: MainViewModel
 ) {
+    Log.i("Recomposition", "InstagramProfileCard")
 
-    val isFollowed: State<Boolean> = viewModel.isFollowing.observeAsState(false)
+    val isFollowed = viewModel.isFollowing.observeAsState(false)
 
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
@@ -54,6 +56,8 @@ fun InstagramProfileCard(
         ),
         elevation = CardDefaults.cardElevation(disabledElevation = 0.dp)
     ) {
+        Log.i("Recomposition", "Card")
+
         Column(
             modifier = Modifier.padding(8.dp)
         ) {
@@ -95,7 +99,7 @@ fun InstagramProfileCard(
                 fontSize = 14.sp
             )
 
-            FollowButton(isFollowed.value) {
+            FollowButton(isFollowed) {
                 viewModel.changeFollowingStatus()
             }
 
@@ -132,16 +136,17 @@ private fun UserStatistics(title: String, value: String) {
 
 @Composable
 private fun FollowButton(
-    isFollowed: Boolean,
+    isFollowed: State<Boolean>,
     clickListener: () -> Unit
 ) {
+    Log.i("Recomposition", "Button")
     Button(
         onClick = {
             clickListener()
         },
         contentPadding = PaddingValues(vertical = 0.dp, horizontal = 18.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isFollowed) {
+            containerColor = if (isFollowed.value) {
                 Color.Blue.copy(alpha = 0.5f)
             } else {
                 Color.Blue
@@ -150,7 +155,7 @@ private fun FollowButton(
         ),
         shape = RoundedCornerShape(8.dp)
     ) {
-        val text = if (isFollowed) {
+        val text = if (isFollowed.value) {
             "Unfollow"
         } else {
             "Follow"
